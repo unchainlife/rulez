@@ -12,12 +12,11 @@ if __name__ == '__main__':
         GetMyNhsRecord()
     ])
 
-    data = {
+    fetcher = StaticDependencyFetcher({
         "records": {
             "1234567890": "OK!"
         }
-    }
-    fetcher = StaticDependencyFetcher(data)
+    })
 
     args = {
         "NhsNumber": "1234567890"

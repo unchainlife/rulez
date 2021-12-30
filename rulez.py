@@ -23,9 +23,8 @@ class Rule(ABC):
 class RulesEngine:
     rules: [Rule] = []
 
-    def add(self, rule):
+    def add(self, rule: Rule):
         self.rules.append(rule)
-        return self
 
     def add_many(self, rules: [Rule]):
         for rule in rules:
