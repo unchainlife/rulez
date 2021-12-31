@@ -54,7 +54,7 @@ def test_engine_with_duplicate_rules_throws_error():
 def test_engine_with_single_rule():
     subject = RulesEngine()
     subject.add(TestRuleV1())
-    result = subject.execute_single(TEST_NAME, DATE_2, {})
+    result = subject.execute_single(TEST_NAME, DATE_2)
     assert result == 1, "Expected 1"
 
 

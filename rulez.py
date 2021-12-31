@@ -3,30 +3,6 @@ from datetime import date
 
 
 # ----------------------------------------------------------------------------------------------------------------------
-# Abstract Base Class, that can lookup dependencies (e.g. Load data from db, fetch URL, etc.)
-# ----------------------------------------------------------------------------------------------------------------------
-
-class DependencyFetcher(ABC):
-    @abstractmethod
-    def fetch(self, name: str, args: {str, any}):
-        pass
-
-
-# ----------------------------------------------------------------------------------------------------------------------
-# Simple version that just reads dependency data from a dictionary
-# ----------------------------------------------------------------------------------------------------------------------
-
-class StaticDependencyFetcher(DependencyFetcher):
-    dataset: {str, any} = {}
-
-    def __init__(self, dataset: {str: any}):
-        self.dataset = dataset
-
-    def fetch(self, name: str, args: {str, any}):
-        return self.dataset[name]
-
-
-# ----------------------------------------------------------------------------------------------------------------------
 # Abstract Base Class for a Rule
 # ----------------------------------------------------------------------------------------------------------------------
 
@@ -43,7 +19,7 @@ class Rule(ABC):
 
     #
     @abstractmethod
-    def execute(self, arguments=None, dependencies: DependencyFetcher = None):
+    def execute(self, arguments=None, **dependencies):
         pass
 
 
@@ -52,6 +28,7 @@ class Rule(ABC):
 # ----------------------------------------------------------------------------------------------------------------------
 
 class RulesEngine:
+
     def __init__(self):
         self.rules: [Rule] = []
 
