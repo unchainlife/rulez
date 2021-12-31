@@ -1,15 +1,15 @@
 from datetime import date
-from rulez import Rule, DependencyFetcher, RulesEngine
+from rulez import Rule, RulesEngine
 from warnings import warn, filterwarnings
 
 filterwarnings('always')
+
 
 # ----------------------------------------------------------------------------------------------------------------------
 # This rule will return whatever value is specified in the constructor
 # ----------------------------------------------------------------------------------------------------------------------
 
 class YesManRuleV1(Rule):
-    answer: str
 
     def version(self) -> (str, date):
         return "YesMan", date.min
